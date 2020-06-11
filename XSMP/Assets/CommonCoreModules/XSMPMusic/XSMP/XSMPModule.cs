@@ -105,11 +105,14 @@ namespace CommonCore.XSMP
             var clipRefsSorted = State.ClipCache.OrderBy(x => x.Value.LastUsedTime).ToArray();
             foreach(var clipRef in clipRefsSorted)
             {
+                if (cachedClips <= Config.MaxCachedClips)
+                    break;
+
                 if (clipRef.Value == State.CurrentClip)
                     continue;
 
-                if (cachedClips <= Config.MaxCachedClips)
-                    break;
+                if (clipRef.Value.RefCount > 0)
+                    continue;
 
                 UnityEngine.Object.Destroy(clipRef.Value.Clip);
                 State.ClipCache.Remove(clipRef.Key);
@@ -159,7 +162,7 @@ namespace CommonCore.XSMP
         {
             string song = State.QueueData[State.CurrentQueueIndex].Id;
             RefCountedClip rClip = await GetSongClip(song, token);
-            rClip.AddRef();
+            rClip.UpdateLastUsedTime();
 
             State.CurrentClip = rClip;
             State.TrackTime = 0;
@@ -169,6 +172,22 @@ namespace CommonCore.XSMP
             AudioPlayer.Instance.SeekMusic(MusicSlot.User, State.TrackTime);
 
             TrimClipCache(); //?
+        }
+
+        public async Task<AudioClip> AcquireSongClip(string song, CancellationToken token)
+        {
+            var clipRef = await GetSongClip(song, token);
+            clipRef.AddRef();
+            return clipRef.Clip;
+        }
+
+        public void ReleaseSongClip(AudioClip clip)
+        {
+            foreach(var songRef in State.ClipCache.Values)
+            {
+                if (songRef.Clip == clip)
+                    songRef.ReleaseRef();
+            }
         }
 
         //API-ish methods
@@ -330,9 +349,7 @@ namespace CommonCore.XSMP
             
             return rClip;
             
-            //TODO trigger a cache clean?
-        }
-                
+        }               
 
         public async Task<List<DataRow>> GetAlbums(CancellationToken token)
         {
@@ -509,6 +526,99 @@ namespace CommonCore.XSMP
                         var dataRow = SongDataRow.Parse((JObject)jsong);
                         data.Add(dataRow);
                     }
+                }
+            }
+
+            return data;
+        }
+
+        public async Task<List<SongDataRow>> SearchSongs(string songName, string albumName, string artistName, CancellationToken token)
+        {
+            List<SongDataRow> data = new List<SongDataRow>();
+
+            List<KeyValuePair<string, string>> searchParams = new List<KeyValuePair<string, string>>();
+            if (!string.IsNullOrEmpty(songName))
+                searchParams.Add(new KeyValuePair<string, string>("song", songName));
+            if (!string.IsNullOrEmpty(albumName))
+                searchParams.Add(new KeyValuePair<string, string>("album", albumName));
+            if (!string.IsNullOrEmpty(artistName))
+                searchParams.Add(new KeyValuePair<string, string>("artist", artistName));
+
+            searchParams.Add(new KeyValuePair<string, string>("list", "songs"));
+
+            var request = new RestRequest($"library/search2", HttpMethod.Get, null, searchParams.ToArray());
+            var response = await DoRestRequest(request, 100000, token);
+
+            var jroot = JToken.Parse(response.Body);
+            token.ThrowIfCancellationRequested();
+            if (!jroot.IsNullOrEmpty() && !jroot["data"].IsNullOrEmpty() && !jroot["data"]["songs"].IsNullOrEmpty())
+            {
+                foreach(JObject songObject in jroot["data"]["songs"])
+                {
+                    var dataRow = SongDataRow.Parse(songObject);
+                    data.Add(dataRow);
+                }
+            }
+
+            return data;
+        }
+
+        public async Task<List<AlbumDataRow>> SearchAlbums(string songName, string albumName, string artistName, CancellationToken token)
+        {
+            List<AlbumDataRow> data = new List<AlbumDataRow>();
+
+            List<KeyValuePair<string, string>> searchParams = new List<KeyValuePair<string, string>>();
+            if (!string.IsNullOrEmpty(songName))
+                searchParams.Add(new KeyValuePair<string, string>("song", songName));
+            if (!string.IsNullOrEmpty(albumName))
+                searchParams.Add(new KeyValuePair<string, string>("album", albumName));
+            if (!string.IsNullOrEmpty(artistName))
+                searchParams.Add(new KeyValuePair<string, string>("artist", artistName));
+
+            searchParams.Add(new KeyValuePair<string, string>("list", "albums"));
+
+            var request = new RestRequest($"library/search2", HttpMethod.Get, null, searchParams.ToArray());
+            var response = await DoRestRequest(request, 100000, token);
+
+            var jroot = JToken.Parse(response.Body);
+            token.ThrowIfCancellationRequested();
+            if (!jroot.IsNullOrEmpty() && !jroot["data"].IsNullOrEmpty() && !jroot["data"]["albums"].IsNullOrEmpty())
+            {
+                foreach (JObject albumObject in jroot["data"]["albums"])
+                {
+                    var dataRow = AlbumDataRow.Parse(albumObject);
+                    data.Add(dataRow);
+                }
+            }
+
+            return data;
+        }
+
+        public async Task<List<ArtistDataRow>> SearchArtists(string songName, string albumName, string artistName, CancellationToken token)
+        {
+            List<ArtistDataRow> data = new List<ArtistDataRow>();
+
+            List<KeyValuePair<string, string>> searchParams = new List<KeyValuePair<string, string>>();
+            if (!string.IsNullOrEmpty(songName))
+                searchParams.Add(new KeyValuePair<string, string>("song", songName));
+            if (!string.IsNullOrEmpty(albumName))
+                searchParams.Add(new KeyValuePair<string, string>("album", albumName));
+            if (!string.IsNullOrEmpty(artistName))
+                searchParams.Add(new KeyValuePair<string, string>("artist", artistName));
+
+            searchParams.Add(new KeyValuePair<string, string>("list", "artists"));
+
+            var request = new RestRequest($"library/search2", HttpMethod.Get, null, searchParams.ToArray());
+            var response = await DoRestRequest(request, 100000, token);
+
+            var jroot = JToken.Parse(response.Body);
+            token.ThrowIfCancellationRequested();
+            if (!jroot.IsNullOrEmpty() && !jroot["data"].IsNullOrEmpty() && !jroot["data"]["artists"].IsNullOrEmpty())
+            {
+                foreach (JObject artistObject in jroot["data"]["artists"])
+                {
+                    var dataRow = ArtistDataRow.Parse(artistObject);
+                    data.Add(dataRow);
                 }
             }
 

@@ -62,7 +62,7 @@ namespace CommonCore.Bigscreen
 
         public void OnClickContinue()
         {
-            SharedUtils.LoadGame(SaveUtils.GetLastSave());
+            SharedUtils.LoadGame(SaveUtils.GetLastSave(), false);
         }
 
         public void OnClickNew()
@@ -131,7 +131,7 @@ namespace CommonCore.Bigscreen
 
         public void OnClickExit()
         {
-            Application.Quit();
+            CoreUtils.Quit();
         }
 
         public void OnClickExitBigscreenMode()

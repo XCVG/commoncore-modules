@@ -29,7 +29,7 @@ namespace CommonCore.XSMP
                 {
                     //attach music, even if we don't have any
                     AudioClip clip = XSMPState.CurrentClip?.Clip;
-                    XSMPState.CurrentClip?.AddRef();
+                    XSMPState.CurrentClip?.UpdateLastUsedTime();
 
                     AudioPlayer.Instance.SetMusic(clip, MusicSlot.User, XSMPState.Volume, false, true);
                     if (XSMPState.Playing)
@@ -56,7 +56,7 @@ namespace CommonCore.XSMP
             if (XSMPState.CurrentClip != null && XSMPState.CurrentClip.Clip == clip)
             {
                 Debug.Log("Released clip " + clip.name); //I expect a lot of bugs
-                XSMPState.CurrentClip?.ReleaseRef();
+                //XSMPState.CurrentClip?.ReleaseRef();
             }
 
             //TODO trigger a cache clean?

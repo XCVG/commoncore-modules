@@ -100,10 +100,11 @@ namespace CommonCore.XSMP
         }
     }
 
-    public class RefCountedClip //I think we can actually eliminate reference counting if we never delete currentclip and are careful about when we delete clips
+    public class RefCountedClip //RefCount is repurposed for external (ie outside XSMP) references
     {
         public AudioClip Clip { get; private set; }
-        //public int RefCount { get; private set; }
+        public int RefCount { get; private set; }
+
         public DateTime CreationTime { get; private set; } //because I just don't want to fucking deal with Unity's thread-unsafe time class bullshit
         public DateTime LastUsedTime { get; private set; }
 
@@ -114,15 +115,20 @@ namespace CommonCore.XSMP
             CreationTime = DateTime.Now;
         }
 
+        public void UpdateLastUsedTime()
+        {
+            LastUsedTime = DateTime.Now;
+        }
+
         public void AddRef()
         {
-            //RefCount++;
+            RefCount++;
             LastUsedTime = DateTime.Now;
         }
 
         public void ReleaseRef()
         {
-            //RefCount--;
+            RefCount--;
         }
     }
 
