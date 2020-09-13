@@ -1,4 +1,5 @@
 ﻿using CommonCore;
+using CommonCore.StringSub;
 using System;
 
 /// <summary>
@@ -17,6 +18,10 @@ public class WindowTitleModule : CCModule
     /// The "default" window title for autoset
     /// </summary>
     private static readonly string DefaultWindowTitle = "Test";
+    /// <summary>
+    /// If set, will use IGUI->WindowTitle from the string lookup and will ignore DefaultWindowTitle if it exists
+    /// </summary>
+    private static readonly bool LookupWindowTitle = false;
 
     public WindowTitleModule()
     {
@@ -28,8 +33,8 @@ public class WindowTitleModule : CCModule
         if (AutosetWindowTitle)
         {
             try
-            {
-                SetWindowTitle(DefaultWindowTitle);
+            {                
+                SetWindowTitle((LookupWindowTitle && Sub.Exists("WindowTitle", "IGUI")) ? Sub.Replace("WindowTitle", "IGUI") : DefaultWindowTitle);
             }
             catch
             {
