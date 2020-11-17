@@ -28,7 +28,7 @@ namespace CommonCore.Integrations.SickDevConsole
 
         public void AddCommand(MethodInfo command, bool useClassName, string alias, string className, string description)
         {
-            Command sdCommand = new Command(ConsoleModule.CreateDelegate(command));
+            Command sdCommand = new Command(TypeUtils.CreateDelegate(command));
 
             sdCommand.useClassName = useClassName;
 
