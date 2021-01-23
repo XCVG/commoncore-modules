@@ -41,7 +41,7 @@ namespace CommonCore.Experimental.ImmersiveMonologue
                     { nameof(FrameOptions.PanelHeight), node.PanelHeight != ChoicePanelHeight.Default ? node.PanelHeight : PanelHeight }
                 });
 
-                TextFrame frame = new TextFrame(null, null, next, null, null, node.Text, node.NextText, null, default, node.TimeToShow, node.TimeToShow > 0, null, null, options, null, null);
+                TextFrame frame = new TextFrame(null, null, next, null, null, node.Text, node.NextText, null, default, node.AllowSkip, node.TimeToShow, node.TimeToShow > 0, null, null, options, null, null);
                 frames.Add($"f_{i}", frame);
             }
 
@@ -59,6 +59,7 @@ namespace CommonCore.Experimental.ImmersiveMonologue
         public string VoiceOverride = null;
         public string Text = null;
         public string NextText = null;
+        public bool AllowSkip = true;
         public float TimeToShow = 0;
         public ChoicePanelHeight PanelHeight = ChoicePanelHeight.Default;
     }
