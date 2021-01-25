@@ -38,7 +38,8 @@ namespace CommonCore.Experimental.ImmersiveMonologue
                 {
                     { nameof(FrameOptions.HideNameText), HideNameText },
                     { nameof(FrameOptions.VoiceOverride), node.VoiceOverride },
-                    { nameof(FrameOptions.PanelHeight), node.PanelHeight != ChoicePanelHeight.Default ? node.PanelHeight : PanelHeight }
+                    { nameof(FrameOptions.PanelHeight), node.PanelHeight != ChoicePanelHeight.Default ? node.PanelHeight : PanelHeight },
+                    { nameof(FrameOptions.PanelHeightPixels), node.PanelHeightPixels}
                 });
 
                 TextFrame frame = new TextFrame(null, null, next, null, null, node.Text, node.NextText, null, default, node.AllowSkip, node.TimeToShow, node.TimeToShow > 0, null, null, options, null, null);
@@ -62,6 +63,7 @@ namespace CommonCore.Experimental.ImmersiveMonologue
         public bool AllowSkip = true;
         public float TimeToShow = 0;
         public ChoicePanelHeight PanelHeight = ChoicePanelHeight.Default;
+        public float PanelHeightPixels = 0;
     }
 
 
