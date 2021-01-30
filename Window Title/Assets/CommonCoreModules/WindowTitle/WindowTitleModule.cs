@@ -21,7 +21,7 @@ public class WindowTitleModule : CCModule
     /// <summary>
     /// If set, will use IGUI->WindowTitle from the string lookup and will ignore DefaultWindowTitle if it exists
     /// </summary>
-    private static readonly bool LookupWindowTitle = false;
+    private static readonly bool LookupWindowTitle = true;
 
     public WindowTitleModule()
     {
