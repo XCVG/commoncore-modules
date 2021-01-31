@@ -8,10 +8,12 @@ Extra modules for [CommonCore RPG Library](https://github.com/XCVG/commoncore/).
 
 * **Big Screen** [EXPERIMENTAL] Support for 10-foot interface menus and controller input. 
 * **CD Audio** [DEPRECATED] Playback of Audio CDs for ingame music.
+* **Freehold Theme** Fantasy UI theme, beige-brown.
 * **Game Data** [EXPERIMENTAL] Loading of arbitrary model objects from JSON resources.
 * **Immersive Monologue** [EXPERIMENTAL] Fancy ingame messages leveraging dialogue system.
 * **SickDev Console Integration** Integration module for [DevConsole 2 asset](https://assetstore.unity.com/packages/tools/gui/devconsole-2-16833).
-* **Threshold Theme** Sci-fi UI theme.
+* **Threshold Theme** Sci-fi UI theme, blue variant.
+* **Threshold Gray Theme** Sci-fi UI theme, greyscale variant.
 * **Unsplash** [DEPRECATED] Shows a splash screen after exiting the game.
 * **Window Title** Allows changing the game window title explicitly or from a lookup string
 * **XSMP** [EXPERIMENTAL] Ingame music player with out-of-process media library [backend](https://github.com/XCVG/XSMP).

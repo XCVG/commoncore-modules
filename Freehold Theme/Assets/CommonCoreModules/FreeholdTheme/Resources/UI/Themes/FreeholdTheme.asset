@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51162a57277571349b2bb53d98d7d906, type: 3}
+  m_Name: FreeholdTheme
+  m_EditorClassIdentifier: 
+  HeadingFont: {fileID: 12800000, guid: ca5b6e4b0f2facd4085270e25f4d86c2, type: 3}
+  BodyFont: {fileID: 12800000, guid: c8af8d4647bb1f4458c0f14138f87037, type: 3}
+  MonospaceFont: {fileID: 12800000, guid: bc1f1f50ec482f048a553600a7fad88f, type: 3}
+  TextColor: {r: 0.1792453, g: 0.16798031, b: 0.16064437, a: 1}
+  TextContrastingColor: {r: 0.8396226, g: 0.83019197, b: 0.7920968, a: 1}
+  Panel: {fileID: 21300000, guid: 6571acec6c4787244a3f05b899dcbd06, type: 3}
+  PanelContrasting: {fileID: 21300000, guid: 5b20e518b95f12e4ab7827f6357e2b1f, type: 3}
+  Frame: {fileID: 21300000, guid: 3c26d47bfb314ec4aa9c01d623bb6572, type: 3}
+  FrameContrasting: {fileID: 21300000, guid: e17c091c1443380408d0a01d4257fb16, type: 3}
+  Button: {fileID: 21300000, guid: 66fba91efed2ae74089e637e1c98a24b, type: 3}
+  ButtonContrasting: {fileID: 21300000, guid: 57fb6ebfdd23be84e89db430a1db0b8d, type: 3}
+  Slider: {fileID: 21300000, guid: 5b20e518b95f12e4ab7827f6357e2b1f, type: 3}
+  SliderHandle: {fileID: 21300000, guid: 22013d3ce509e744c936adacde8d1771, type: 3}
+  SliderFill: {fileID: 21300000, guid: d53877ab1b26e8f42bb438fb055f1a00, type: 3}
+  Bar: {fileID: 21300000, guid: 5b20e518b95f12e4ab7827f6357e2b1f, type: 3}
+  BarFill: {fileID: 21300000, guid: d53877ab1b26e8f42bb438fb055f1a00, type: 3}
+  RadioButton: {fileID: 21300000, guid: 9d0548bf60305e543b4e2ab9ebfabeed, type: 3}
+  RadioButtonCheck: {fileID: 21300000, guid: eba8c779e4e9b8e4abef691dcd0bb794, type: 3}
+  ToggleButton: {fileID: 21300000, guid: 725d391fb0bb8d649af9603a72fa13f8, type: 3}
+  ToggleButtonCheck: {fileID: 21300000, guid: 70b9a4fa5cfa16145a13f676fa8792f4, type: 3}
+  ComboBox: {fileID: 21300000, guid: 6571acec6c4787244a3f05b899dcbd06, type: 3}
+  ComboBoxList: {fileID: 21300000, guid: 6571acec6c4787244a3f05b899dcbd06, type: 3}
+  ComboBoxArrow: {fileID: 21300000, guid: 80c706ebe9646db469ecdfd60638b6b7, type: 3}
+  InputField: {fileID: 21300000, guid: 6571acec6c4787244a3f05b899dcbd06, type: 3}
