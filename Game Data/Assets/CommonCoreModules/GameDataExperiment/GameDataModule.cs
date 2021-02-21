@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace CommonCore.Experimental.GameData
@@ -37,14 +38,16 @@ namespace CommonCore.Experimental.GameData
         private void PreloadCache()
         {
 
+            var types = CoreUtils.GetLoadedTypes();
+
             var textAssets = CoreUtils.LoadResources<TextAsset>(Path);
             foreach(var textAsset in textAssets)
             {
                 try
                 {
-                    Type t = Type.GetType(textAsset.name, true);
-                    object data = JsonConvert.DeserializeObject(textAsset.text, t, CoreParams.DefaultJsonSerializerSettings);
-                    CachedData.Add(t, data);
+                    Type assetType = types.Where(t => t.Name == textAsset.name).Single();
+                    object data = JsonConvert.DeserializeObject(textAsset.text, assetType, CoreParams.DefaultJsonSerializerSettings);
+                    CachedData.Add(assetType, data);
                 }
                 catch(Exception e)
                 {
@@ -84,9 +87,17 @@ namespace CommonCore.Experimental.GameData
 
         private object LoadAndCache(Type t)
         {
-            TextAsset textAsset = CoreUtils.LoadResource<TextAsset>(Path + t.Name);
-            object data = JsonConvert.DeserializeObject(textAsset.text, t, CoreParams.DefaultJsonSerializerSettings);
-
+            object data;
+            if(CoreUtils.CheckResource<TextAsset>(Path + t.Name))
+            {
+                TextAsset textAsset = CoreUtils.LoadResource<TextAsset>(Path + t.Name);
+                data = JsonConvert.DeserializeObject(textAsset.text, t, CoreParams.DefaultJsonSerializerSettings);
+            }
+            else
+            {
+                data = Activator.CreateInstance(t);
+            }
+            
             if(CoreParams.LoadPolicy == DataLoadPolicy.Cached || CoreParams.LoadPolicy == DataLoadPolicy.OnStart)
                 CachedData.Add(t, data);
 
