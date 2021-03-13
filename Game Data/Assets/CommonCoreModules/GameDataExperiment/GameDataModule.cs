@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using CommonCore.DebugLog;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -102,6 +103,19 @@ namespace CommonCore.Experimental.GameData
                 CachedData.Add(t, data);
 
             return data;
+        }
+
+        [Command(alias = "ClearCache", className = "GameData", useClassName = true)]
+        private static void ClearCacheCommand()
+        {
+            CCBase.GetModule<GameDataModule>().ClearCache();
+        }
+
+        [Command(alias = "DumpCached", className = "GameData", useClassName = true)]
+        private static void DumpCacheCommand()
+        {
+            var data = CCBase.GetModule<GameDataModule>().CachedData;
+            DebugUtils.JsonWrite(data, "GameData");
         }
 
     }
