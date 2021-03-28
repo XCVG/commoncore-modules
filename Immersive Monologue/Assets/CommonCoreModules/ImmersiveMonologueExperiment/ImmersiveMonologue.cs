@@ -1,4 +1,5 @@
 ﻿using CommonCore.RpgGame.Dialogue;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 
@@ -29,7 +30,8 @@ namespace CommonCore.Experimental.ImmersiveMonologue
             string defaultFrameName = "f_0";
 
             Dictionary<string, Frame> frames = new Dictionary<string, Frame>();
-            for(int i = 0; i < Nodes.Length; i++)
+            DialogueScene dialogueScene = new DialogueScene(frames, defaultFrameName, Music);
+            for (int i = 0; i < Nodes.Length; i++)
             {
                 var node = Nodes[i];
 
@@ -42,11 +44,10 @@ namespace CommonCore.Experimental.ImmersiveMonologue
                     { nameof(FrameOptions.PanelHeightPixels), node.PanelHeightPixels}
                 });
 
-                TextFrame frame = new TextFrame(null, null, next, null, null, node.Text, node.NextText, null, default, node.AllowSkip, node.TimeToShow, node.TimeToShow > 0, null, null, options, null, null);
+                TextFrame frame = new TextFrame(null, null, next, null, null, node.Text, node.NextText, null, default, node.AllowSkip, node.TimeToShow, node.TimeToShow > 0, null, null, options, null, dialogueScene, null, JValue.CreateNull(), null);
                 frames.Add($"f_{i}", frame);
             }
-
-            DialogueScene dialogueScene = new DialogueScene(frames, defaultFrameName, Music);
+            
             return dialogueScene;
         }
     }
