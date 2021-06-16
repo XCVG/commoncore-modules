@@ -23,6 +23,8 @@ MonoBehaviour:
   FrameContrasting: {fileID: 21300000, guid: e17c091c1443380408d0a01d4257fb16, type: 3}
   Button: {fileID: 21300000, guid: 66fba91efed2ae74089e637e1c98a24b, type: 3}
   ButtonContrasting: {fileID: 21300000, guid: 57fb6ebfdd23be84e89db430a1db0b8d, type: 3}
+  ScrollbarFrame: {fileID: 21300000, guid: 3c26d47bfb314ec4aa9c01d623bb6572, type: 3}
+  ScrollbarHandle: {fileID: 21300000, guid: 66fba91efed2ae74089e637e1c98a24b, type: 3}
   Slider: {fileID: 21300000, guid: 5b20e518b95f12e4ab7827f6357e2b1f, type: 3}
   SliderHandle: {fileID: 21300000, guid: 22013d3ce509e744c936adacde8d1771, type: 3}
   SliderFill: {fileID: 21300000, guid: d53877ab1b26e8f42bb438fb055f1a00, type: 3}
