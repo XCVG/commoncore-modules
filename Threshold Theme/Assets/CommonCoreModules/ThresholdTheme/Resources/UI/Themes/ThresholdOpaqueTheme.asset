@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51162a57277571349b2bb53d98d7d906, type: 3}
+  m_Name: ThresholdOpaqueTheme
+  m_EditorClassIdentifier: 
+  HeadingFont: {fileID: 12800000, guid: 2c5953fe0185c65458e9ced2821402d4, type: 3}
+  BodyFont: {fileID: 12800000, guid: 5a21a95ad47ec6f418c017c303a7b959, type: 3}
+  MonospaceFont: {fileID: 12800000, guid: 0254214acf628b44cbbae886afe0c25e, type: 3}
+  TextColor: {r: 0, g: 0, b: 0, a: 1}
+  TextContrastingColor: {r: 0.95, g: 0.95, b: 0.95, a: 1}
+  Panel: {fileID: 21300000, guid: e93694d73a741e646bab57a544716bcd, type: 3}
+  PanelContrasting: {fileID: 21300000, guid: 0ebe91eabaa29dd41b439c277566f860, type: 3}
+  Frame: {fileID: 21300000, guid: b4b4a4cf21f9ff8499a77175147cd99d, type: 3}
+  FrameContrasting: {fileID: 21300000, guid: cbd8ef13c72f67c4da066e5a66d51a38, type: 3}
+  Button: {fileID: 21300000, guid: 3ee317f011cb4d647878e617f4b61b5d, type: 3}
+  ButtonContrasting: {fileID: 21300000, guid: 7e0b1e7cf485fd24e9ba90cbfa05b84b, type: 3}
+  ScrollbarFrame: {fileID: 21300000, guid: b4b4a4cf21f9ff8499a77175147cd99d, type: 3}
+  ScrollbarHandle: {fileID: 21300000, guid: c6ec7158834af3848b046ffeca66b07d, type: 3}
+  Slider: {fileID: 21300000, guid: 0ebe91eabaa29dd41b439c277566f860, type: 3}
+  SliderHandle: {fileID: 21300000, guid: 6de84f52861357e45b6aafd6a1bab45b, type: 3}
+  SliderFill: {fileID: 21300000, guid: a049d06c529a84041b3e945b2f05ada9, type: 3}
+  Bar: {fileID: 21300000, guid: 0ebe91eabaa29dd41b439c277566f860, type: 3}
+  BarFill: {fileID: 21300000, guid: a049d06c529a84041b3e945b2f05ada9, type: 3}
+  RadioButton: {fileID: 21300000, guid: 90f2235b0aeebec42b99eef654685a54, type: 3}
+  RadioButtonCheck: {fileID: 21300000, guid: 4eac73f65a8a1b74fa05212f598eb567, type: 3}
+  ToggleButton: {fileID: 21300000, guid: a39f8d37dc540b340ba0fb6566851371, type: 3}
+  ToggleButtonCheck: {fileID: 21300000, guid: 6e8290ca53d5c7a44b84cdff38757457, type: 3}
+  ComboBox: {fileID: 21300000, guid: e93694d73a741e646bab57a544716bcd, type: 3}
+  ComboBoxList: {fileID: 21300000, guid: e93694d73a741e646bab57a544716bcd, type: 3}
+  ComboBoxArrow: {fileID: 21300000, guid: f30705aa23433b84a9c9f72e94c36d66, type: 3}
+  InputField: {fileID: 21300000, guid: e93694d73a741e646bab57a544716bcd, type: 3}
