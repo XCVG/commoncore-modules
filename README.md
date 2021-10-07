@@ -6,17 +6,17 @@ Extra modules for [CommonCore RPG Library](https://github.com/XCVG/commoncore/).
 
 ## Module Listing
 
-* **Achievements** [EXPERIMENTAL] Utilities and UI for in-game achievements.
-* **Big Screen** [EXPERIMENTAL] Support for 10-foot interface menus and controller input. 
-* **CD Audio** [DEPRECATED] Playback of Audio CDs for ingame music.
 * **Freehold Theme** Fantasy UI theme, beige-brown.
-* **Immersive Monologue** [EXPERIMENTAL] Fancy ingame messages leveraging dialogue system.
-* **SickDev Console Integration** Integration module for [DevConsole 2 asset](https://assetstore.unity.com/packages/tools/gui/devconsole-2-16833).
-* **Speed Hacks** [EXPERIMENTAL] Additional graphics options and integration components for low-end systems.
+* **SickDev Console Integration** Integration module for [DevConsole 2 asset](https://assetstore.unity.com/packages/tools/gui/devconsole-2-16833) [Alternate downloads](https://app.mediafire.com/fj7w3epmv6pbn)
 * **Threshold Theme** Sci-fi UI theme, with blue, gray, and opaque variants.
-* **Unsplash** [DEPRECATED] Shows a splash screen after exiting the game.
 * **Window Title** Allows changing the game window title explicitly or from a lookup string
+* **Achievements** [EXPERIMENTAL] Utilities and UI for in-game achievements.
+* **Big Screen** [EXPERIMENTAL] Support for 10-foot interface menus and controller input.
+* **Immersive Monologue** [EXPERIMENTAL] Fancy ingame messages leveraging dialogue system.
+* **Speed Hacks** [EXPERIMENTAL] Additional graphics options and integration components for low-end systems.
 * **XSMP** [EXPERIMENTAL] Ingame music player with out-of-process media library [backend](https://github.com/XCVG/XSMP).
+* **CD Audio** [DEPRECATED] Playback of Audio CDs for ingame music.
+* **Unsplash** [DEPRECATED] Shows a splash screen after exiting the game.
 
 ## License
 
