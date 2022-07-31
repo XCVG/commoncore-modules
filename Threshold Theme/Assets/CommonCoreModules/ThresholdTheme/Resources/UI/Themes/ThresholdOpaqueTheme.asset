@@ -17,6 +17,7 @@ MonoBehaviour:
   MonospaceFont: {fileID: 12800000, guid: 0254214acf628b44cbbae886afe0c25e, type: 3}
   TextColor: {r: 0, g: 0, b: 0, a: 1}
   TextContrastingColor: {r: 0.95, g: 0.95, b: 0.95, a: 1}
+  HighlightColor: {r: 0.34901962, g: 0.6313726, b: 0.7019608, a: 1}
   Panel: {fileID: 21300000, guid: e93694d73a741e646bab57a544716bcd, type: 3}
   PanelContrasting: {fileID: 21300000, guid: 0ebe91eabaa29dd41b439c277566f860, type: 3}
   Frame: {fileID: 21300000, guid: b4b4a4cf21f9ff8499a77175147cd99d, type: 3}
