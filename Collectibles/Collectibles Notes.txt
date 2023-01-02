@@ -1,0 +1,8 @@
+The Collectibles module is very much experimental and WIP. A few quick notes:
+- "visuals" can be sprites, textures, audio clips, or prefabs, and must be mounted at /Modules/CollectiblesExperiment/Visuals/ (this path will likely change)
+- Nice names for collectibles come from the string sub system and should be in the COLLECTIBLES_NAME list
+- Collectibles collections are stored in GameState->GlobalDataState and PersistState->ExtraStore under the CollectiblesExperimentModule_CollectiblesCollection key
+- The module can inject its UI panel into the ingame menu but not the main menu (there is no API for the latter in 4.x, planned for 5.x)
+- The way module params are loaded into the object is a bit hacky but will be improved in 5.x when that functionality is improved (this is probably the first time ever moduleparams are used)
+- There is currently no audio player supported in the visual view so audio logs are pretty useless (can only be played immediately)
+- The view for the visual will apply the default theme rather than its container's theme (if you're overriding theme selection in menus etc)

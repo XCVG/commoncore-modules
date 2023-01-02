@@ -11,6 +11,7 @@ Extra modules for [CommonCore](https://github.com/XCVG/commoncore/). Each folder
 * **Threshold Theme** Sci-fi UI theme, with blue, gray, and opaque variants.
 * **Window Title** Allows changing the game window title explicitly or from a lookup string
 * **Achievements** [EXPERIMENTAL] Utilities and UI for in-game achievements.
+* **Collectibles** [EXPERIMENTAL] Framework and UI for ingame and persistent collectibles (text, audio logs, etc).
 * **Immersive Monologue** [EXPERIMENTAL] Fancy ingame messages leveraging dialogue system.
 * **Speed Hacks** [EXPERIMENTAL] Additional graphics options and integration components for low-end systems.
 * **Big Screen** [DEPRECATED] Support for 10-foot interface menus and controller input.
