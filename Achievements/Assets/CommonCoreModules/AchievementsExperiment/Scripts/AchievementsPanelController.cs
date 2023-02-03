@@ -23,6 +23,15 @@ namespace CommonCore.Experimental.Achievements
         [SerializeField]
         private bool ApplyTheme = true;
 
+        [SerializeField, Header("Display Options")]
+        private Color LockedColor = new Color(0.75f, 0.75f, 0.75f, 1f);
+        [SerializeField]
+        private bool AutoLockedColor = false;
+        [SerializeField]
+        private bool DimLockedImage = true;
+        [SerializeField]
+        private bool ShowDescriptionForLocked = true;
+
         public override void SignalPaint()
         {
             base.SignalPaint();
@@ -79,10 +88,14 @@ namespace CommonCore.Experimental.Achievements
                 }
                 else
                 {
-                    descriptionText.text = string.IsNullOrEmpty(achievementKvp.Value.Hint) ? achievementKvp.Value.Description : achievementKvp.Value.Hint;
-                    image.color = new Color(0.33f, 0.33f, 0.33f, 1f);
-                    nameText.color = new Color(0.75f, 0.75f, 0.75f, 1f);
-                    descriptionText.color = new Color(0.75f, 0.75f, 0.75f, 1f);
+                    descriptionText.text = string.IsNullOrEmpty(achievementKvp.Value.Hint) ? (ShowDescriptionForLocked ? achievementKvp.Value.Description : string.Empty) : achievementKvp.Value.Hint;
+                    if(DimLockedImage)
+                        image.color = new Color(0.33f, 0.33f, 0.33f, 1f);
+
+                    Color lockedColor = AutoLockedColor ? nameText.color * 0.75f : LockedColor;
+
+                    nameText.color = lockedColor;
+                    descriptionText.color = lockedColor;
                 }
 
                 panel.gameObject.SetActive(true);
