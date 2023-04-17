@@ -1,3 +1,4 @@
+using CommonCore.Scripting;
 using CommonCore.State;
 using CommonCore.StringSub;
 using Newtonsoft.Json;
@@ -7,6 +8,7 @@ using System.Linq;
 using UnityEngine;
 using CommonCore.UI;
 using System.Reflection;
+using CommonCore.Messaging;
 
 namespace CommonCore.Experimental.Collectibles
 {
@@ -43,16 +45,40 @@ namespace CommonCore.Experimental.Collectibles
         public void GrantCollectible(string key, bool persist)
         {
             var collection = persist ? GetPersistentCollectiblesCollection() : GetCurrentCollectiblesCollection();
-            if(!collection.ContainsKey(key))
+            bool isFirstGrant = false;
+            string campaignId = GameState.Exists ? GameState.Instance.CampaignIdentifier : "";
+            var now = DateTime.Now;
+            if (!collection.ContainsKey(key))
             {
-                string campaignId = GameState.Exists ? GameState.Instance.CampaignIdentifier : "";
-
                 collection.Add(key, new CollectibleRecordInternal()
                 {
-                    Granted = DateTime.Now,
+                    Granted = now,
                     GrantedCampaignId = campaignId
                 });
+                isFirstGrant = true;
             }
+
+            ScriptingModule.CallNamedHooked("CollectiblesOnGrant", this, new CollectibleRecord() { 
+                Key = key,
+                Type = persist ? CollectibleRecordType.Persistent : CollectibleRecordType.InGame,
+                Granted = now,
+                GrantedCampaignId = campaignId,
+                Name = GetNameForCollectible(key)
+            }, isFirstGrant);
+
+            QdmsMessageBus.Instance.PushBroadcast(new QdmsKeyValueMessage("CollectibleGranted", new Dictionary<string, object>()
+            {
+                { "CollectibleRecord", 
+                    new CollectibleRecord() {
+                        Key = key,
+                        Type = persist ? CollectibleRecordType.Persistent : CollectibleRecordType.InGame,
+                        Granted = now,
+                        GrantedCampaignId = campaignId,
+                        Name = GetNameForCollectible(key)
+                    } 
+                },
+                { "IsFirstGrant", isFirstGrant }
+            }));
         }
 
         /// <summary>
