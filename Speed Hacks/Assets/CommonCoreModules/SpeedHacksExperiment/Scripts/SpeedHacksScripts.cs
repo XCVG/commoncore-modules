@@ -19,6 +19,8 @@ namespace CommonCore.Experimental.SpeedHacks
         public bool DisableDetailObjects { get; set; } = false;
         [DisplayName("Disable Background Objects")]
         public bool DisableBackgroundObjects { get; set; } = false;
+        [DisplayName("Disable Terrain Details")]
+        public bool DisableTerrainDetails { get; set; } = false;
         [DisplayName("Reduce Terrain Detail")]
         public bool ReduceTerrainDetails { get; set; } = false;
 
@@ -106,7 +108,15 @@ namespace CommonCore.Experimental.SpeedHacks
                 }
             }
 
-            if(options.ReduceTerrainDetails)
+            if(options.DisableTerrainDetails)
+            {
+                foreach (var terrain in CoreUtils.GetWorldRoot().GetComponentsInChildren<Terrain>(true))
+                {
+                    terrain.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+                    terrain.drawTreesAndFoliage = false;
+                }
+            }
+            else if(options.ReduceTerrainDetails)
             {
                 foreach(var terrain in CoreUtils.GetWorldRoot().GetComponentsInChildren<Terrain>(true))
                 {
