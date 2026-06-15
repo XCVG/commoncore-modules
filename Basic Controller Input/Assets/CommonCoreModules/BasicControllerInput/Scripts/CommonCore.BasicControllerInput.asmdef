@@ -1,0 +1,17 @@
+{
+    "name": "CommonCore.BasicControllerInput",
+    "rootNamespace": "",
+    "references": [
+        "GUID:bd3e44967793d3f47a507c36b2015cf8",
+        "GUID:75469ad4d38634e559750d17036d5f7c"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
