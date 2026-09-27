@@ -7,7 +7,7 @@ Extra modules for [CommonCore](https://github.com/XCVG/commoncore/). Each folder
 ## Module Listing
 
 * **Freehold Theme** Fantasy UI theme, beige-brown.
-* **SickDev Console Integration** Integration module for [DevConsole 2 asset](https://assetstore.unity.com/packages/tools/gui/devconsole-2-16833) [Alternate downloads](https://app.mediafire.com/fj7w3epmv6pbn)
+* **SickDev Console Integration** Integration module for [DevConsole 2 asset](https://assetstore.unity.com/packages/tools/gui/devconsole-2-16833) [Alternate downloads](https://www.mediafire.com/file_premium/2qm8yr4gpequ2eb/DevConsole2_1.0.44.0_Unity2022.zip/file)
 * **Threshold Theme** Sci-fi UI theme, with blue, gray, and opaque variants.
 * **Window Title** Allows changing the game window title explicitly or from a lookup string
 * **Achievements** [EXPERIMENTAL] Utilities and UI for in-game achievements.
